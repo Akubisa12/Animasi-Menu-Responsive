@@ -1,0 +1,162 @@
+body{
+  height: 97.5vh;
+  background: linear-gradient(45deg,greenyellow ,dodgerblue);
+}
+
+input{
+  display: none;
+}
+
+.open{
+  background: white;
+  width: 24px;
+  height: 4px;
+  display: block;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  top: 8px;
+}
+
+.open::before{
+  content: '';
+  position: relative;
+  background: white;
+  width: 24px;
+  height: 4px;
+  display: block;
+  border-radius: 2px;
+  top: -8px;
+  transform: rotate(0deg);
+}
+
+.open::after{
+  content: '';
+  position: relative;
+  background: white;
+  width: 24px;
+  height: 4px;
+  display: block;
+  border-radius: 2px;
+  top: 4px;
+  transform: rotate(0deg);
+}
+
+.menu-Open{
+  display: block;
+  width: 24px;
+  height: 20px;
+  padding: 15px;
+  cursor: pointer;
+  float: right;
+}
+
+.menu-Open:hover .open::before{
+  top: -9px;
+}
+
+.menu-Open:hover .open::after{
+  top: 5px;
+}
+
+.menu{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, dodgerblue, greenyellow);
+}
+
+.menu label{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 20px;
+  top: 20px;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.menu .menu-Content{
+  position: relative;
+  top: 50%;
+  font-size: 44px;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-top: -170px;
+}
+
+.menu .menu-Content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.menu .menu-Content ul li a {
+  display: block;
+  /* silahkan install font trebuchet ms di Google Fonts atau gunakan perintah import, lalu tambahkan property font-family di sini(HAPUS KOMENTAR INI JIKA SUDAH DITAMBAHKAN FONT FAMILY!) */
+  color:white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding:10px 0;
+  margin: 10px 0;
+  transition: color 0.2s;
+}
+
+.menu .menu-Content ul li a:hover{
+  color:#3c3c3c;
+}
+
+.menu .menu-Content ul li:hover{
+  background: white;
+}
+
+.menu-Effect{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s visibility 0.5s;
+}
+
+.menu-Effect ul {
+  transform: translateY(0%);
+  transition: all .5s;
+}
+
+#menu-Toggle:checked ~ .menu-Effect{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s;
+}
+
+#menu-Toggle:checked ~ .menu-Effect ul {
+  opacity: 1;
+}
+
+#menu-Toggle:checked ~ .menu-Open .open{
+  background-color: transparent;
+}
+
+#menu-Toggle:checked ~ .menu-Open .open::before{
+  content: '';
+  background-color: white;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#menu-Toggle:checked ~ .menu-Open .open::after{
+  content: '';
+  background-color: white;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#menu-Toggle:not(:checked) ~ .menu-Effect ul{
+  transform: translateY(-30%);
+}
